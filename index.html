@@ -3,12 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>background color changer</title>
+    <title>Background colour changer</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
+    <h1>Background-Color-Changer</h1>
+    <div class="card-container">
+        <div class="card" onclick="cardClicked(this)">Card 1</div>
+        <div class="card" onclick="cardClicked(this)">Card 2</div>
+        <div class="card" onclick="cardClicked(this)">Card 3</div>
+        <div class="card" onclick="cardClicked(this)">Card 4</div>
+        <div class="card" onclick="cardClicked(this)">Card 5</div>
+        <div class="card" onclick="cardClicked(this)">Card 6</div>
+        <div class="card" onclick="cardClicked(this)">Card 7</div>
+        <div class="card" onclick="cardClicked(this)">Card 8</div>
+    </div>
+
     <script>
-        let a= prompt("enter a color");
-       document.body.style.backgroundColor = a;
+        function cardClicked(card) {
+            alert("You clicked " + card.textContent);
+            card.style.backgroundColor = getRandomColor();
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
     </script>
 </body>
 </html>
